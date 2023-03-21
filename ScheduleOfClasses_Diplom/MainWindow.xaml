@@ -1,0 +1,66 @@
+﻿<Window x:Class="ScheduleOfClasses_Diplom.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ScheduleOfClasses_Diplom"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10">
+            <TextBlock Text="Школьное расписание" FontSize="24" FontWeight="Bold"/>
+        </StackPanel>
+
+        <!-- Основная область -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Левая область -->
+            <Grid>
+
+                <Grid Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Панель инструментов -->
+                    <StackPanel Grid.Column="0" Orientation="Vertical" Margin="3">
+                        <Button Content="Add Class" Margin="0 0 0 10" Width="100" Background="Red"/>
+                        <Button Content="Add Teacher" Margin="0 0 0 10" Width="100"/>
+                        <Button Content="Add Room" Margin="0 0 0 10" Width="100"/>
+                        <Button Content="Generate Schedule" Margin="0 0 0 10" Width="100"/>
+                    </StackPanel>
+
+                    <!-- Список классов -->
+                    <ListBox Grid.Column="1" Margin="5" Width="auto" Height="auto" ItemsSource="{Binding Classes}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding TeacherName}" Margin="0 5 0 0"/>
+                                    <TextBlock Text="{Binding RoomName}" Margin="0 5 0 0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </Grid>
+
+            <!-- Правая область -->
+            <Grid Grid.Column="1">
+                <!-- Календарь -->
+                <Calendar Margin="10"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
