@@ -34,21 +34,21 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <!-- Панель инструментов -->
-                    <StackPanel Grid.Column="0" Orientation="Vertical" Margin="3">
-                        <Button Content="Add Class" Margin="0 0 0 10" Width="100" Background="Red"/>
-                        <Button Content="Add Teacher" Margin="0 0 0 10" Width="100"/>
-                        <Button Content="Add Room" Margin="0 0 0 10" Width="100"/>
-                        <Button Content="Generate Schedule" Margin="0 0 0 10" Width="100"/>
+                    <StackPanel Grid.Column="0" Orientation="Vertical" Margin="5">
+                        <Button x:Name="AddClassBut" Content="Новый класс" Margin="0 0 0 5" Width="150" Background="#FFDDDDDD" FontSize="11" Click="AddClassBut_Click"/>
+                        <Button Content="Добавить учителя" Margin="0 0 0 5" Width="150" FontSize="11"/>
+                        <Button Content="Добавить аудиторию" Margin="0 0 0 5" Width="150" FontSize="11"/>
+                        <Button Content="Сгенерировать расписание" Margin="0 0 0 5" Width="150" FontSize="11"/>
                     </StackPanel>
 
                     <!-- Список классов -->
-                    <ListBox Grid.Column="1" Margin="5" Width="auto" Height="auto" ItemsSource="{Binding Classes}">
+                    <ListBox x:Name="ClassesListBox" Grid.Column="1" Margin="5" Width="auto" Height="auto" ItemsSource="{Binding _Classes}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
-                                    <TextBlock Text="{Binding TeacherName}" Margin="0 5 0 0"/>
-                                    <TextBlock Text="{Binding RoomName}" Margin="0 5 0 0"/>
+                                    <TextBlock Text="{Binding _Name}" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding _TeacherName}" Margin="0 5 0 0"/>
+                                    <TextBlock Text="{Binding _RoomName}" Margin="0 5 0 0"/>
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
