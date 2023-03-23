@@ -1,0 +1,35 @@
+﻿<Window x:Class="Test.OtherWindow.AddDataWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Test.OtherWindow"
+        mc:Ignorable="d"
+        Title="AddDataWindow" Height="500" Width="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5">
+            <Label Content="Номер: "/>
+            <TextBox x:Name="txtNumber" Width="100" Margin="5"/>
+            <Label Content="Предмет: "/>
+            <TextBox x:Name="txtSubject" Width="100" Margin="5"/>
+            <Label Content="Вместимость: "/>
+            <TextBox x:Name="txtCapacity" Width="100" Margin="5"/>
+            <Label Content="Корпус: "/>
+            <TextBox x:Name="txtBuilding" Width="100" Margin="5"/>
+            <Button x:Name="AddBut_AddDataW" Content="Добавить" Click="AddAuditorium_Click" Margin="5"/>
+            <Button x:Name="SaveBut_AddDataW" Content="Сохранить" Click="SaveAuditoriums_Click" Margin="5"/>
+        </StackPanel>
+        <DataGrid x:Name="dgAuditoriums" Grid.Row="1" Margin="5" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер" Binding="{Binding Number}"/>
+                <DataGridTextColumn Header="Предмет" Binding="{Binding Subject}"/>
+                <DataGridTextColumn Header="Вместимость" Binding="{Binding Capacity}"/>
+                <DataGridTextColumn Header="Корпус" Binding="{Binding Building}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

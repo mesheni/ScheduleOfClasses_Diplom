@@ -16,6 +16,5 @@ namespace Test.Model
         public string phone { get; set; } // Телефон
         public string address { get; set; } // Адрес
         public string birthDate { get; set; } // Дата рождения
-        public Auditorium auditorium; // Кабинет
     }
 }

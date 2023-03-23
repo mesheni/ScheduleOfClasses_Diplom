@@ -24,5 +24,10 @@ namespace Test
         {
             InitializeComponent();
         }
+
+        private void AddData_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
