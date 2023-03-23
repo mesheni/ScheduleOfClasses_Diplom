@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Test.OtherWindow;
 
 namespace Test
 {
@@ -27,7 +28,8 @@ namespace Test
 
         private void AddData_Click(object sender, RoutedEventArgs e)
         {
-
+            AddDataWindow addDataWindow = new AddDataWindow();
+            addDataWindow.ShowDialog();
         }
     }
 }

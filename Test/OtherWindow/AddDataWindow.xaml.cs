@@ -22,11 +22,11 @@ namespace Test.OtherWindow
     /// </summary>
     public partial class AddDataWindow : Window
     {
-
+        // Создаем список из аудиторий
         private List<Auditorium> auditoriums = new List<Auditorium>();
-        private string filePath = "auditoriums.xml";
+        private string filePath = "auditoriums.xml"; // название файла, гду будут храниться аудитории
 
-        public AddDataWindow()
+        public AddDataWindow() // Конструктор
         {
             InitializeComponent();
             LoadAuditoriums();
@@ -34,36 +34,44 @@ namespace Test.OtherWindow
 
         private void AddAuditorium_Click(object sender, RoutedEventArgs e)
         {
-            string number = txtNumber.Text;
-            string subject = txtSubject.Text;
-            string capacity = txtCapacity.Text;
-            string building = txtBuilding.Text;
+            // Создаем экземпляр класса аудитории
+            Auditorium auditorium = new Auditorium();
 
-            Auditorium auditorium = new Auditorium(number, subject, capacity, building);
+            // Заполняем данными из текстбоксов
+            auditorium.Number = txtNumber.Text;
+            auditorium.Subject = txtSubject.Text;
+            auditorium.Capacity = txtCapacity.Text;
+            auditorium.Building = txtBuilding.Text;
+
+            // Добавляем данные в список аудиторий
             auditoriums.Add(auditorium);
+            // Обновляем DataGrid данными из списка аудиторий
             dgAuditoriums.ItemsSource = null;
             dgAuditoriums.ItemsSource = auditoriums;
         }
 
-        private void SaveAuditoriums_Click(object sender, RoutedEventArgs e)
+        private void SaveAuditoriums_Click(object sender, RoutedEventArgs e) // Сохранение в xml файле
         {
+            // Создаем объект xml сериализации и передаем наш список аудиторий
             XmlSerializer serializer = new XmlSerializer(typeof(List<Auditorium>));
+            // Записываем в файл наши данные
             using (FileStream stream = File.Create(filePath))
             {
                 serializer.Serialize(stream, auditoriums);
             }
         }
 
-        private void LoadAuditoriums()
+        private void LoadAuditoriums() // Загрузка данных из файла в DataGrid
         {
-            if (File.Exists(filePath))
+            if (File.Exists(filePath)) // Проверяем, существует ли файл
             {
+                // Создаем объект xml сериализации и передаем ему список аудиторий
                 XmlSerializer serializer = new XmlSerializer(typeof(List<Auditorium>));
-                using (FileStream stream = File.OpenRead(filePath))
+                using (FileStream stream = File.OpenRead(filePath)) // Читаем из файла
                 {
-                    auditoriums = (List<Auditorium>)serializer.Deserialize(stream);
+                    auditoriums = serializer.Deserialize(stream) as List<Auditorium>;
                 }
-                dgAuditoriums.ItemsSource = auditoriums;
+                dgAuditoriums.ItemsSource = auditoriums; // Прочитанную информацию помещаем в DataGrid
             }
         }
     }

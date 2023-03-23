@@ -8,13 +8,15 @@ namespace Test.Model
 {
     public class Auditorium
     {
-        public Auditorium(string num, string subj, string cap, string build) 
-        {
-            Number = num;
-            Subject = subj;
-            Capacity = cap;
-            Building = build;
-        }
+
+        public Auditorium() { }
+        //public Auditorium(string num, string subj, string cap, string build) 
+        //{
+        //    Number = num;
+        //    Subject = subj;
+        //    Capacity = cap;
+        //    Building = build;
+        //}
 
 
         public string Number { get; set; } // Номер кабинета
