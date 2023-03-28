@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Test"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="900" MinHeight="500" MinWidth="900">
+        Title="MainWindow" Height="500" Width="900" MinHeight="500" MinWidth="900" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid Margin="10">
             <Grid.RowDefinitions>
@@ -26,7 +26,7 @@
             <Button x:Name="AddData" Grid.Column="1" Content="Добавить данные" HorizontalAlignment="Left" 
                     Margin="121,0,0,0" VerticalAlignment="Center" Height="25" Width="116" Click="AddData_Click"/>
             <!--Панель для выбора, таблиц. Список преподавателей, кабинетов, расписание.-->
-            <ComboBox Grid.Column="1" Margin="0,4,10,4" HorizontalAlignment="Right" 
+            <ComboBox Grid.Column="1" Margin="0,4,0,4" HorizontalAlignment="Right" 
                       Width="100"/>
         </Grid>
     </Grid>
