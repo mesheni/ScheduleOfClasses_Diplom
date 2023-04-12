@@ -17,17 +17,25 @@
                 <ColumnDefinition Width="700*"/>
             </Grid.ColumnDefinitions>
             <!--Таблица, в которой будут располагаться данные.-->
-            <DataGrid Grid.Column="1" Grid.Row="1" 
-                      d:ItemsSource="{d:SampleData ItemCount=5}"/>
+            <ListView x:Name="ScheduleListView" Grid.Column="1" Grid.Row="1">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Day" DisplayMemberBinding="{Binding DayOfWeek}" Width="100"/>
+                        <GridViewColumn Header="Subjects" DisplayMemberBinding="{Binding NameSubjects}" Width="300"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
             <!--Панель инструментов с кнопками для добавления расписания, 
                 и новых данных о кабинетах и преподавателях-->
             <Button x:Name="AddSchedule" Grid.Column="1" Content="Новое расписание" HorizontalAlignment="Left" 
-                    VerticalAlignment="Center" Height="25" Width="116"/>
+                    VerticalAlignment="Center" Height="auto" Width="116" Click="AddSchedule_Click"/>
             <Button x:Name="AddData" Grid.Column="1" Content="Добавить данные" HorizontalAlignment="Left" 
-                    Margin="121,0,0,0" VerticalAlignment="Center" Height="25" Width="116" Click="AddData_Click"/>
+                    Margin="121,0,0,0" VerticalAlignment="Center" Height="auto" Width="116" Click="AddData_Click"/>
             <!--Панель для выбора, таблиц. Список преподавателей, кабинетов, расписание.-->
             <ComboBox Grid.Column="1" Margin="0,4,0,4" HorizontalAlignment="Right" 
-                      Width="100"/>
+                      Width="100" Height="19.96">
+                <ComboBoxItem Content="Расписание"/>
+            </ComboBox>
         </Grid>
     </Grid>
 </Window>

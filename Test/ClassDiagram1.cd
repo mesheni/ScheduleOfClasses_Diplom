@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Test.Model.Teacher">
+    <Position X="3.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAACAAIAAAAQABAAAAAACAAAAIAAAAAA=</HashCode>
+      <FileName>Model\Teacher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Test.Model.Subject">
+    <Position X="8.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Model\Subject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Test.Model.Auditorium">
+    <Position X="6.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAMAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Auditorium.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Test.Model.Schedule">
+    <Position X="5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAEAAAAAAA=</HashCode>
+      <FileName>Model\Schedule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

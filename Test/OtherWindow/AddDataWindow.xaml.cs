@@ -22,7 +22,7 @@ namespace Test.OtherWindow
     /// </summary>
     public partial class AddDataWindow : Window
     {
-        // Создаем список из аудиторий и учителей
+        // Создаем список из аудиторий, учителей, предметов
         private List<Auditorium> auditoriums = new List<Auditorium>();
         private List<Teacher> teachers = new List<Teacher>();
         private List<Subject> subjects = new List<Subject>();
@@ -30,13 +30,11 @@ namespace Test.OtherWindow
         private string filePathTeacher = "teachers.xml"; // название файла, где будут храниться преподаватели
         private string filePathSubject = "subjects.xml"; // название файла, где будут храниться преподаватели
 
-
         public AddDataWindow() // Конструктор
         {
             InitializeComponent();
             LoadAuditoriums();
         }
-
 
         // Код для вкладки "Аудитории"
         #region
@@ -70,6 +68,7 @@ namespace Test.OtherWindow
             using (FileStream stream = File.Create(filePathAuditorium))
             {
                 serializer.Serialize(stream, auditoriums);
+                MessageBox.Show("Данные успешно сохранены!", "Успех!");
             }
         }
 
@@ -178,6 +177,7 @@ namespace Test.OtherWindow
             using (FileStream stream = File.Create(filePathTeacher))
             {
                 serializer.Serialize(stream, teachers);
+                MessageBox.Show("Данные успешно сохранены!", "Успех!");
             }
         }
 
@@ -208,7 +208,6 @@ namespace Test.OtherWindow
             comSubjectT.Items.Clear();
             foreach (var i in subjects)
                 comSubjectT.Items.Add(i.NameSubject);
-            MessageBox.Show("hhh");
 
             if (File.Exists(filePathTeacher)) // Проверяем, существует ли файл
             {
@@ -256,6 +255,7 @@ namespace Test.OtherWindow
             using (FileStream stream = File.Create(filePathSubject))
             {
                 serializer.Serialize(stream, subjects);
+                MessageBox.Show("Данные успешно сохранены!", "Успех!");
             }
         }
 
