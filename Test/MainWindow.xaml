@@ -27,8 +27,8 @@
             </ListView>
             <!--Панель инструментов с кнопками для добавления расписания, 
                 и новых данных о кабинетах и преподавателях-->
-            <Button x:Name="AddSchedule" Grid.Column="1" Content="Новое расписание" HorizontalAlignment="Left" 
-                    VerticalAlignment="Center" Height="auto" Width="116" Click="AddSchedule_Click"/>
+            <!--<Button x:Name="AddSchedule" Grid.Column="1" Content="Новое расписание" HorizontalAlignment="Left" 
+                    VerticalAlignment="Center" Height="auto" Width="116" Click="AddSchedule_Click"/>-->
             <Button x:Name="AddData" Grid.Column="1" Content="Добавить данные" HorizontalAlignment="Left" 
                     Margin="121,0,0,0" VerticalAlignment="Center" Height="auto" Width="116" Click="AddData_Click"/>
             <!--Панель для выбора, таблиц. Список преподавателей, кабинетов, расписание.-->

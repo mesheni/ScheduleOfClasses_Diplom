@@ -54,34 +54,25 @@
                     <Grid Grid.Row="0" Margin="5" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <StackPanel VerticalAlignment="Center" Grid.Column="0" Background="#FFE0E0E0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="0" Background="#FFE0E0E0">
                             <Label Content="Имя: "/>
-                            <TextBox x:Name="txtNameT" Width="auto" Margin="1"/>
+                            <TextBox x:Name="txtNameT" Width="110" Margin="5"/>
                             <Label Content="Фамилия: "/>
-                            <TextBox x:Name="txtSurnameT" Width="auto" Margin="1"/>
-                        </StackPanel>
-                        <StackPanel VerticalAlignment="Center" Grid.Column="1" Background="#FFE0E0E0">
-                            <Label Content="Пол: "/>
-                            <TextBox x:Name="txtGenderT" Width="auto" Margin="1"/>
+                            <TextBox x:Name="txtSurnameT" Width="110" Margin="5"/>
                             <Label Content="Предмет: "/>
-                            <ComboBox x:Name="comSubjectT" Width="auto" Height="17.97" Margin="1" />
-                            <!--<TextBox x:Name="txtSubjectT" Width="auto" Margin="1"/>-->
-                        </StackPanel>
-                        <StackPanel VerticalAlignment="Center" Grid.Column="2" Background="#FFE0E0E0">
+                            <ComboBox x:Name="comSubjectT" Width="110" Height="17.97" Margin="5" />
                             <Label Content="Почта: "/>
-                            <TextBox x:Name="txtEmailT" Width="auto" Margin="1"/>
-                            <Label Content="Телефон: "/>
-                            <TextBox x:Name="txtPhoneT" Width="auto" Margin="1"/>
+                            <TextBox x:Name="txtEmailT" Width="110" Margin="5"/>
                         </StackPanel>
-                        <StackPanel VerticalAlignment="Center" Grid.Column="3" Background="#FFE0E0E0">
-                            <Label Content="Адрес: "/>
-                            <TextBox x:Name="txtAddressT" Width="auto" Margin="1"/>
-                            <Label Content="Дата рождения: "/>
-                            <TextBox x:Name="txtBirthDate" Width="auto" Margin="1"/>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="1" Background="#FFE0E0E0">
+                            <Label Content="Телефон: "/>
+                            <TextBox x:Name="txtPhoneT" Width="110" Margin="5"/>
+                            <!--<TextBox x:Name="txtSubjectT" Width="auto" Margin="1"/>-->
                         </StackPanel>
                     </Grid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="1">
@@ -92,12 +83,9 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}"/>
-                            <DataGridTextColumn Header="Пол" Binding="{Binding Gender}"/>
                             <DataGridTextColumn Header="Предмет" Binding="{Binding Subject}"/>
                             <DataGridTextColumn Header="Почта" Binding="{Binding Email}"/>
                             <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}"/>
-                            <DataGridTextColumn Header="Адрес" Binding="{Binding Address}"/>
-                            <DataGridTextColumn Header="Дата рождения" Binding="{Binding BirthDate}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -116,6 +104,8 @@
                             <TextBox x:Name="txtNameS" Width="110" Margin="5"/>
                             <Label Content="Кол-во часов в неделю: "/>
                             <TextBox x:Name="txtCountHoursS" Width="110" Margin="5"/>
+                            <Label Content="Сложность предмета: "/>
+                            <TextBox x:Name="txtComplexityS" Width="110" Margin="5"/>
                         </StackPanel>
                     </Grid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="1">
@@ -126,6 +116,7 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Название" Binding="{Binding NameSubject}"/>
                             <DataGridTextColumn Header="Кол-во часов в неделю" Binding="{Binding CountHours}"/>
+                            <DataGridTextColumn Header="Сложность предмета" Binding="{Binding Complexity}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

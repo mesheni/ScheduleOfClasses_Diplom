@@ -146,12 +146,9 @@ namespace Test.OtherWindow
             // Заполняем данными из текстбоксов
             teacher.Name = txtNameT.Text;
             teacher.Surname = txtSurnameT.Text;
-            teacher.Gender = txtGenderT.Text;
             teacher.Subject = comSubjectT.Text;
             teacher.Email = txtEmailT.Text;
             teacher.Phone = txtPhoneT.Text;
-            teacher.Address = txtAddressT.Text;
-            teacher.BirthDate = txtBirthDate.Text;
 
             // Добавляем данные в список аудиторий
             teachers.Add(teacher);
@@ -161,11 +158,8 @@ namespace Test.OtherWindow
 
             txtNameT.Text = "";
             txtSurnameT.Text = "";
-            txtGenderT.Text = "";
             txtEmailT.Text = "";
             txtPhoneT.Text = "";
-            txtAddressT.Text = "";
-            txtBirthDate.Text = "";
         }
 
         // Функция сохранения данных учителей в xml файле
@@ -233,7 +227,8 @@ namespace Test.OtherWindow
 
             // Заполняем данными из текстбоксов
             subject.NameSubject = txtNameS.Text;
-            subject.CountHours = txtCountHoursS.Text;
+            subject.CountHours = Convert.ToInt32(txtCountHoursS.Text);
+            subject.Complexity = Convert.ToInt32(txtComplexityS.Text);
 
             // Добавляем данные в список аудиторий
             subjects.Add(subject);
@@ -244,6 +239,7 @@ namespace Test.OtherWindow
 
             txtNameS.Text = "";
             txtCountHoursS.Text = "";
+            txtComplexityS.Text = "";
         }
 
         // Функция сохранения данных предметов в xml файле
