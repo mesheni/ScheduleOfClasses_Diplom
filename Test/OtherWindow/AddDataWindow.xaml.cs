@@ -22,18 +22,48 @@ namespace Test.OtherWindow
     /// </summary>
     public partial class AddDataWindow : Window
     {
+        string audDir = @".\Auditoriums\";
+        string teachDir = @".\Teachers\";
+        string subDir = @".\Subjects\";
+        string classDir = @".\Classes\";
+
+
         // Создаем список из аудиторий, учителей, предметов
         private List<Auditorium> auditoriums = new List<Auditorium>();
         private List<Teacher> teachers = new List<Teacher>();
         private List<Subject> subjects = new List<Subject>();
+        private List<StudentsGroup> classes = new List<StudentsGroup>();
         private string filePathAuditorium = "auditoriums.xml"; // название файла, где будут храниться аудитории
         private string filePathTeacher = "teachers.xml"; // название файла, где будут храниться преподаватели
-        private string filePathSubject = "subjects.xml"; // название файла, где будут храниться преподаватели
+        private string filePathSubject = "subjects.xml"; // название файла, где будут храниться предметы
+        private string filePathClasses = "classes.xml"; // название файла, где будут храниться классы
+
 
         public AddDataWindow() // Конструктор
         {
             InitializeComponent();
             LoadAuditoriums();
+            InitDir();
+        }
+
+        private void InitDir()
+        {
+            if (!Directory.Exists(audDir))
+            {
+                Directory.CreateDirectory(audDir);
+            }
+            if (!Directory.Exists(teachDir))
+            {
+                Directory.CreateDirectory(teachDir);
+            }
+            if (!Directory.Exists(subDir))
+            {
+                Directory.CreateDirectory(subDir);
+            }
+            if (!Directory.Exists(classDir))
+            {
+                Directory.CreateDirectory(classDir);
+            }
         }
 
         // Код для вкладки "Аудитории"
@@ -44,10 +74,9 @@ namespace Test.OtherWindow
             Auditorium auditorium = new Auditorium();
 
             // Заполняем данными из текстбоксов
-            auditorium.Number = txtNumber.Text;
-            auditorium.Subject = comSubject.Text;
-            auditorium.Capacity = txtCapacity.Text;
-            auditorium.Building = txtBuilding.Text;
+            auditorium.Id = Convert.ToInt32(txtIdAuditorium.Text);
+            auditorium.Name = txtNameAuditorium.Text;
+            auditorium.NumberOfSeats = Convert.ToInt32(txtNumSeatsAuditorium.Text);
 
             // Добавляем данные в список аудиторий
             auditoriums.Add(auditorium);
@@ -55,9 +84,9 @@ namespace Test.OtherWindow
             dgAuditoriums.ItemsSource = null;
             dgAuditoriums.ItemsSource = auditoriums;
 
-            txtNumber.Text = "";
-            txtCapacity.Text = "";
-            txtBuilding.Text = "";
+            txtIdAuditorium.Text = "";
+            txtNameAuditorium.Text = "";
+            txtNumSeatsAuditorium.Text = "";
         }
 
         private void SaveAuditoriums_Click(object sender, RoutedEventArgs e) // Сохранение в xml файле
@@ -65,7 +94,7 @@ namespace Test.OtherWindow
             // Создаем объект xml сериализации и передаем наш список аудиторий
             XmlSerializer serializer = new XmlSerializer(typeof(List<Auditorium>));
             // Записываем в файл наши данные
-            using (FileStream stream = File.Create(filePathAuditorium))
+            using (FileStream stream = File.Create($"{audDir}{filePathAuditorium}"))
             {
                 serializer.Serialize(stream, auditoriums);
                 MessageBox.Show("Данные успешно сохранены!", "Успех!");
@@ -74,19 +103,11 @@ namespace Test.OtherWindow
 
         private void LoadAuditoriums() // Загрузка данных из файла в DataGrid
         {
-            comSubject.Items.Clear();
-            foreach (var i in subjects)
-                comSubject.Items.Add(i.NameSubject);
-
-            comSubjectT.Items.Clear();
-            foreach (var i in subjects)
-                comSubjectT.Items.Add(i.NameSubject);
-
-            if (File.Exists(filePathAuditorium)) // Проверяем, существует ли файл
+            if (File.Exists($"{audDir}{filePathAuditorium}")) // Проверяем, существует ли файл
             {
                 // Создаем объект xml сериализации и передаем ему список аудиторий
                 XmlSerializer serializer = new XmlSerializer(typeof(List<Auditorium>));
-                using (FileStream stream = File.OpenRead(filePathAuditorium)) // Читаем из файла
+                using (FileStream stream = File.OpenRead($"{audDir}{filePathAuditorium}")) // Читаем из файла
                 {
                     auditoriums = serializer.Deserialize(stream) as List<Auditorium>;
                 }
@@ -117,15 +138,11 @@ namespace Test.OtherWindow
         // Функция загрузки данных из файла в DataGrid при переходе на вкладку "Аудитории"
         private void TabItemAuditorium_Initialized(object sender, EventArgs e)
         {
-            comSubject.Items.Clear();
-            foreach (var i in subjects)
-                comSubject.Items.Add(i.NameSubject);
-
-            if (File.Exists(filePathAuditorium)) // Проверяем, существует ли файл
+            if (File.Exists($"{audDir}{filePathAuditorium}")) // Проверяем, существует ли файл
             {
                 // Создаем объект xml сериализации и передаем ему список аудиторий
                 XmlSerializer serializer = new XmlSerializer(typeof(List<Auditorium>));
-                using (FileStream stream = File.OpenRead(filePathAuditorium)) // Читаем из файла
+                using (FileStream stream = File.OpenRead($"{audDir}{filePathAuditorium}")) // Читаем из файла
                 {
                     auditoriums = serializer.Deserialize(stream) as List<Auditorium>;
                 }
@@ -133,7 +150,7 @@ namespace Test.OtherWindow
             }
         }
         #endregion
-
+        // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
         // Код для вкладки "Преподаватели"
         #region
@@ -144,11 +161,8 @@ namespace Test.OtherWindow
             Teacher teacher = new Teacher();
 
             // Заполняем данными из текстбоксов
-            teacher.Name = txtNameT.Text;
-            teacher.Surname = txtSurnameT.Text;
-            teacher.Subject = comSubjectT.Text;
-            teacher.Email = txtEmailT.Text;
-            teacher.Phone = txtPhoneT.Text;
+            teacher.Id = Convert.ToInt32(txtIdTeacher.Text);
+            teacher.Name = txtNameTeacher.Text;
 
             // Добавляем данные в список аудиторий
             teachers.Add(teacher);
@@ -156,10 +170,8 @@ namespace Test.OtherWindow
             dgTeachers.ItemsSource = null;
             dgTeachers.ItemsSource = teachers;
 
-            txtNameT.Text = "";
-            txtSurnameT.Text = "";
-            txtEmailT.Text = "";
-            txtPhoneT.Text = "";
+            txtIdTeacher.Text = "";
+            txtNameTeacher.Text = "";
         }
 
         // Функция сохранения данных учителей в xml файле
@@ -168,7 +180,7 @@ namespace Test.OtherWindow
             // Создаем объект xml сериализации и передаем наш список аудиторий
             XmlSerializer serializer = new XmlSerializer(typeof(List<Teacher>));
             // Записываем в файл наши данные
-            using (FileStream stream = File.Create(filePathTeacher))
+            using (FileStream stream = File.Create($"{teachDir}{filePathTeacher}"))
             {
                 serializer.Serialize(stream, teachers);
                 MessageBox.Show("Данные успешно сохранены!", "Успех!");
@@ -199,15 +211,11 @@ namespace Test.OtherWindow
         // Функция загрузки данных из файла в DataGrid при переходе на вкладку "Учителя"
         private void TabItemTeacher_Initialized(object sender, EventArgs e)
         {
-            comSubjectT.Items.Clear();
-            foreach (var i in subjects)
-                comSubjectT.Items.Add(i.NameSubject);
-
-            if (File.Exists(filePathTeacher)) // Проверяем, существует ли файл
+            if (File.Exists($"{teachDir}{filePathTeacher}")) // Проверяем, существует ли файл
             {
                 // Создаем объект xml сериализации и передаем ему список учителей
                 XmlSerializer serializer = new XmlSerializer(typeof(List<Teacher>));
-                using (FileStream stream = File.OpenRead(filePathTeacher)) // Читаем из файла
+                using (FileStream stream = File.OpenRead($"{teachDir}{filePathTeacher}")) // Читаем из файла
                 {
                     teachers = serializer.Deserialize(stream) as List<Teacher>;
                 }
@@ -215,7 +223,7 @@ namespace Test.OtherWindow
             }
         }
         #endregion
-
+        // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
         // Код для вкладки "Предметы"
         #region
@@ -226,9 +234,8 @@ namespace Test.OtherWindow
             Subject subject = new Subject();
 
             // Заполняем данными из текстбоксов
-            subject.NameSubject = txtNameS.Text;
-            subject.CountHours = Convert.ToInt32(txtCountHoursS.Text);
-            subject.Complexity = Convert.ToInt32(txtComplexityS.Text);
+            subject.Id = Convert.ToInt32(txtIdSubject.Text);
+            subject.Name = txtNameSubject.Text;
 
             // Добавляем данные в список аудиторий
             subjects.Add(subject);
@@ -237,9 +244,8 @@ namespace Test.OtherWindow
             dgSubjects.ItemsSource = null;
             dgSubjects.ItemsSource = subjects;
 
-            txtNameS.Text = "";
-            txtCountHoursS.Text = "";
-            txtComplexityS.Text = "";
+            txtIdSubject.Text = "";
+            txtNameSubject.Text = "";
         }
 
         // Функция сохранения данных предметов в xml файле
@@ -248,7 +254,7 @@ namespace Test.OtherWindow
             // Создаем объект xml сериализации и передаем наш список аудиторий
             XmlSerializer serializer = new XmlSerializer(typeof(List<Subject>));
             // Записываем в файл наши данные
-            using (FileStream stream = File.Create(filePathSubject))
+            using (FileStream stream = File.Create($"{subDir}{filePathSubject}"))
             {
                 serializer.Serialize(stream, subjects);
                 MessageBox.Show("Данные успешно сохранены!", "Успех!");
@@ -279,11 +285,11 @@ namespace Test.OtherWindow
         // Функция загрузки данных из файла в DataGrid при переходе на вкладку "Предметы"
         private void TabItemSubject_Initialized(object sender, EventArgs e)
         {
-            if (File.Exists(filePathSubject)) // Проверяем, существует ли файл
+            if (File.Exists($"{subDir}{filePathSubject}")) // Проверяем, существует ли файл
             {
                 // Создаем объект xml сериализации и передаем ему список предметов
                 XmlSerializer serializer = new XmlSerializer(typeof(List<Subject>));
-                using (FileStream stream = File.OpenRead(filePathSubject)) // Читаем из файла
+                using (FileStream stream = File.OpenRead($"{subDir}{filePathSubject}")) // Читаем из файла
                 {
                     subjects = serializer.Deserialize(stream) as List<Subject>;
                 }
@@ -291,6 +297,78 @@ namespace Test.OtherWindow
             }
         }
         #endregion
+        // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        
+        // Код для вкладки "Классы"
+        #region
+        private void AddButClasses_AddDataW_Click(object sender, RoutedEventArgs e)
+        {
+            // Создаем экземпляр класса классов
+            StudentsGroup classSchool = new StudentsGroup();
 
+            // Заполняем данными из текстбоксов
+            classSchool.Id = Convert.ToInt32(txtIdClass.Text);
+            classSchool.Name = txtNameClass.Text;
+            classSchool.NumberOfStudents = Convert.ToInt32(txtNumberStudentsClass.Text);
+
+            // Добавляем данные в список классов
+            classes.Add(classSchool);
+
+            // Обновляем DataGrid данными из списка классов
+            dgClasses.ItemsSource = null;
+            dgClasses.ItemsSource = classes;
+
+            txtIdClass.Text = "";
+            txtNameClass.Text = "";
+            txtNumberStudentsClass.Text = "";
+        }
+
+        private void SaveButClasses_AddDataW_Click(object sender, RoutedEventArgs e)
+        {
+            // Создаем объект xml сериализации и передаем наш список аудиторий
+            XmlSerializer serializer = new XmlSerializer(typeof(List<StudentsGroup>));
+            // Записываем в файл наши данные
+            using (FileStream stream = File.Create($"{classDir}{filePathClasses}"))
+            {
+                serializer.Serialize(stream, classes);
+                MessageBox.Show("Данные успешно сохранены!", "Успех!");
+            }
+        }
+
+        private void TabItemClasses_Initialized(object sender, EventArgs e)
+        {
+            if (File.Exists($"{classDir}{filePathClasses}")) // Проверяем, существует ли файл
+            {
+                // Создаем объект xml сериализации и передаем ему список предметов
+                XmlSerializer serializer = new XmlSerializer(typeof(List<StudentsGroup>));
+                using (FileStream stream = File.OpenRead($"{classDir}{filePathClasses}")) // Читаем из файла
+                {
+                    classes = serializer.Deserialize(stream) as List<StudentsGroup>;
+                }
+                dgClasses.ItemsSource = classes; // Прочитанную информацию помещаем в DataGrid
+            }
+        }
+
+        private void DeleteClasses_Click(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete) // Если нажата кнопка Delete
+            {
+                if (dgClasses.SelectedIndex != -1)
+                {
+                    // Выводим сообщение
+                    MessageBoxResult result = MessageBox.Show("Вы действительно хотите удалить запись?", "Удаление записи", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        // Удаляем строку из списка классов
+                        classes.RemoveAt(dgClasses.SelectedIndex);
+                        // Перезаписываем DataGrid
+                        dgClasses.ItemsSource = null;
+                        dgClasses.ItemsSource = classes;
+                    }
+                }
+            }
+        }
+        #endregion
+        // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     }
 }

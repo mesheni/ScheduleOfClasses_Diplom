@@ -9,8 +9,10 @@ namespace Test.Model
     // Класс предмета
     public class Subject
     {
-        public string NameSubject { get; set; } // Название предмета
-        public int CountHours { get; set; } // Количество часов в неделю
-        public int Complexity { get; set; } // Сложность предмета
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        public int HoursOfWeek { get; set; }
     }
 }

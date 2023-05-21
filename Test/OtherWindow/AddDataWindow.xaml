@@ -18,15 +18,14 @@
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" Margin="5">
                         <StackPanel Grid.Column="0" Orientation="Horizontal" Background="#FFE0E0E0">
-                            <Label Content="Номер: " VerticalContentAlignment="Center"/>
-                            <TextBox x:Name="txtNumber" Width="110" Margin="5"/>
-                            <Label Content="Предмет: " VerticalContentAlignment="Center"/>
-                            <ComboBox x:Name="comSubject" Width="110" Margin="5"/>
-                            <!--<TextBox x:Name="txtSubject" Width="110" Margin="5"/>-->
-                            <Label Content="Вместимость: " VerticalContentAlignment="Center"/>
-                            <TextBox x:Name="txtCapacity" Width="110" Margin="5"/>
-                            <Label Content="Корпус: " VerticalContentAlignment="Center"/>
-                            <TextBox x:Name="txtBuilding" Width="110" Margin="5"/>
+                            <Label Content="ID: " VerticalContentAlignment="Center"/>
+                            <TextBox x:Name="txtIdAuditorium" Width="110" Margin="5"/>
+                            
+                            <Label Content="Название: " VerticalContentAlignment="Center"/>
+                            <TextBox x:Name="txtNameAuditorium" Width="110" Margin="5"/>
+
+                            <Label Content="Количество мест: " VerticalContentAlignment="Center"/>
+                            <TextBox x:Name="txtNumSeatsAuditorium" Width="110" Margin="5"/>
                         </StackPanel>
                     </Grid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="1">
@@ -35,10 +34,9 @@
                     </StackPanel>
                     <DataGrid x:Name="dgAuditoriums" Grid.Row="2" Margin="5" AutoGenerateColumns="False" PreviewKeyDown="DeleteAuditorium_Click" CanUserDeleteRows="False">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Номер" Binding="{Binding Number}"/>
-                            <DataGridTextColumn Header="Предмет" Binding="{Binding Subject}"/>
-                            <DataGridTextColumn Header="Вместимость" Binding="{Binding Capacity}"/>
-                            <DataGridTextColumn Header="Корпус" Binding="{Binding Building}"/>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Название" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Количество мест" Binding="{Binding NumberOfSeats}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -57,22 +55,13 @@
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
-                            <RowDefinition/>
                         </Grid.RowDefinitions>
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="0" Background="#FFE0E0E0">
-                            <Label Content="Имя: "/>
-                            <TextBox x:Name="txtNameT" Width="110" Margin="5"/>
-                            <Label Content="Фамилия: "/>
-                            <TextBox x:Name="txtSurnameT" Width="110" Margin="5"/>
-                            <Label Content="Предмет: "/>
-                            <ComboBox x:Name="comSubjectT" Width="110" Height="17.97" Margin="5" />
-                            <Label Content="Почта: "/>
-                            <TextBox x:Name="txtEmailT" Width="110" Margin="5"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="1" Background="#FFE0E0E0">
-                            <Label Content="Телефон: "/>
-                            <TextBox x:Name="txtPhoneT" Width="110" Margin="5"/>
-                            <!--<TextBox x:Name="txtSubjectT" Width="auto" Margin="1"/>-->
+                            <Label Content="ID: "/>
+                            <TextBox x:Name="txtIdTeacher" Width="110" Margin="5"/>
+                            
+                            <Label Content="ФИО: "/>
+                            <TextBox x:Name="txtNameTeacher" Width="110" Margin="5"/>
                         </StackPanel>
                     </Grid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="1">
@@ -81,11 +70,8 @@
                     </StackPanel>
                     <DataGrid x:Name="dgTeachers" Grid.Row="2" Margin="5" AutoGenerateColumns="False" CanUserDeleteRows="False" PreviewKeyDown="DeleteTeacher_Click">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>
-                            <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}"/>
-                            <DataGridTextColumn Header="Предмет" Binding="{Binding Subject}"/>
-                            <DataGridTextColumn Header="Почта" Binding="{Binding Email}"/>
-                            <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}"/>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="ФИО" Binding="{Binding Name}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -99,13 +85,15 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" Margin="5">
-                        <StackPanel Grid.Column="0" Orientation="Horizontal" Background="#FFE0E0E0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" Background="#FFE0E0E0">
+                            <Label Content="ID: "/>
+                            <TextBox x:Name="txtIdSubject" Width="110" Margin="5"/>
                             <Label Content="Название: "/>
-                            <TextBox x:Name="txtNameS" Width="110" Margin="5"/>
-                            <Label Content="Кол-во часов в неделю: "/>
-                            <TextBox x:Name="txtCountHoursS" Width="110" Margin="5"/>
-                            <Label Content="Сложность предмета: "/>
-                            <TextBox x:Name="txtComplexityS" Width="110" Margin="5"/>
+                            <TextBox x:Name="txtNameSubject" Width="110" Margin="5"/>
                         </StackPanel>
                     </Grid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="1">
@@ -114,11 +102,48 @@
                     </StackPanel>
                     <DataGrid x:Name="dgSubjects" Grid.Row="2" Margin="5" AutoGenerateColumns="False" PreviewKeyDown="DeleteSubject_Click" CanUserDeleteRows="False">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Название" Binding="{Binding NameSubject}"/>
-                            <DataGridTextColumn Header="Кол-во часов в неделю" Binding="{Binding CountHours}"/>
-                            <DataGridTextColumn Header="Сложность предмета" Binding="{Binding Complexity}"/>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Название" Binding="{Binding Name}"/>
                         </DataGrid.Columns>
                     </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="TabItemClasses" HorizontalAlignment="Center" Height="20" Header="Классы" VerticalAlignment="Center" Width="54" Initialized="TabItemClasses_Initialized">
+                <Grid Background="#FFE5E5E5">
+                    <Grid Height="auto" Margin="5,5,5,5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Margin="5" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="0" Background="#FFE0E0E0">
+                                <Label Content="ID: "/>
+                                <TextBox x:Name="txtIdClass" Width="110" Margin="5"/>
+                                <Label Content="Название: "/>
+                                <TextBox x:Name="txtNameClass" Width="110" Margin="5"/>
+                                <Label Content="Количество учеников: "/>
+                                <TextBox x:Name="txtNumberStudentsClass" Width="110" Margin="5"/>
+                            </StackPanel>
+                        </Grid>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="1">
+                            <Button x:Name="AddButClasses_AddDataW" Content="Добавить" Margin="5" Click="AddButClasses_AddDataW_Click"/>
+                            <Button x:Name="SaveButClasses_AddDataW" Content="Сохранить" Margin="5" Click="SaveButClasses_AddDataW_Click"/>
+                        </StackPanel>
+                        <DataGrid x:Name="dgClasses" Grid.Row="2" Margin="5" AutoGenerateColumns="False" CanUserDeleteRows="False" PreviewKeyDown="DeleteClasses_Click">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                                <DataGridTextColumn Header="Название" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Header="Количество учеников" Binding="{Binding NumberOfStudents}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
                 </Grid>
             </TabItem>
         </TabControl>

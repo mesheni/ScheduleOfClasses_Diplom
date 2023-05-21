@@ -8,9 +8,12 @@ namespace Test.Model
 {
     public class Auditorium
     {
-        public string Number { get; set; } // Номер кабинета
-        public string Subject { get; set; } // Предмет
-        public string Capacity { get; set; } // Вместимость
-        public string Building { get; set; } // Здание
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        public int NumberOfSeats { get; set; }
+
+        public Subject subject { get; set; }
     }
 }

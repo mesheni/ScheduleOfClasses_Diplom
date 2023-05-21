@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Test.Model
 {
-    public class Teacher
+    public class StudentsGroup
     {
         public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public Subject Subject { get; set; }
+        public int NumberOfStudents { get; set; }
     }
 }
