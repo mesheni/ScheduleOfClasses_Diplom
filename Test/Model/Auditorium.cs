@@ -14,6 +14,6 @@ namespace Test.Model
 
         public int NumberOfSeats { get; set; }
 
-        public Subject subject { get; set; }
+        public Subject Subject { get; set; }
     }
 }

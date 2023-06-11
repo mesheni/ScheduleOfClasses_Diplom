@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Test.OtherWindow"
         mc:Ignorable="d"
-        Title="AddDataWindow" Height="550" Width="900" MinHeight="550" MinWidth="900" WindowStartupLocation="CenterScreen">
+        Title="Добавление данных" Height="550" Width="900" MinHeight="550" MinWidth="900" WindowStartupLocation="CenterScreen">
     <Grid>
         <TabControl>
             <!--Форма для заполнения информации об аудиториях.-->
@@ -26,6 +26,9 @@
 
                             <Label Content="Количество мест: " VerticalContentAlignment="Center"/>
                             <TextBox x:Name="txtNumSeatsAuditorium" Width="110" Margin="5"/>
+
+                            <Label Content="Предмет: " VerticalContentAlignment="Center"/>
+                            <ComboBox x:Name="comSubjectAuditorium" Width="110" Margin="5"/>
                         </StackPanel>
                     </Grid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="1">
@@ -37,6 +40,7 @@
                             <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
                             <DataGridTextColumn Header="Название" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Количество мест" Binding="{Binding NumberOfSeats}"/>
+                            <DataGridTextColumn Header="Предмет" Binding="{Binding Subject.Name}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -62,6 +66,9 @@
                             
                             <Label Content="ФИО: "/>
                             <TextBox x:Name="txtNameTeacher" Width="110" Margin="5"/>
+
+                            <Label Content="Предмет: "/>
+                            <ComboBox x:Name="comSubjectTeacher" Width="110" Margin="5"/>
                         </StackPanel>
                     </Grid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="1">
@@ -72,6 +79,7 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
                             <DataGridTextColumn Header="ФИО" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Предмет" Binding="{Binding Subject.Name}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

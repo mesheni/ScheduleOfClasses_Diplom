@@ -27,7 +27,6 @@ namespace Test.OtherWindow
         string subDir = @".\Subjects\";
         string classDir = @".\Classes\";
 
-
         // Создаем список из аудиторий, учителей, предметов
         private List<Auditorium> auditoriums = new List<Auditorium>();
         private List<Teacher> teachers = new List<Teacher>();
@@ -77,6 +76,13 @@ namespace Test.OtherWindow
             auditorium.Id = Convert.ToInt32(txtIdAuditorium.Text);
             auditorium.Name = txtNameAuditorium.Text;
             auditorium.NumberOfSeats = Convert.ToInt32(txtNumSeatsAuditorium.Text);
+            foreach (Subject subject in subjects)
+            {
+                if (subject.Name == comSubjectAuditorium.Text)
+                {
+                    auditorium.Subject = subject;
+                }
+            }
 
             // Добавляем данные в список аудиторий
             auditoriums.Add(auditorium);
@@ -113,6 +119,12 @@ namespace Test.OtherWindow
                 }
                 dgAuditoriums.ItemsSource = auditoriums; // Прочитанную информацию помещаем в DataGrid
             }
+            foreach (Subject i in subjects)
+            {
+                comSubjectAuditorium.Items.Add(i.Name);
+                comSubjectTeacher.Items.Add(i.Name);
+            }
+
         }
         // Функция удаления записи из DataGrid по нажатию кнопки Delete
         private void DeleteAuditorium_Click(object sender, KeyEventArgs e)
@@ -163,6 +175,13 @@ namespace Test.OtherWindow
             // Заполняем данными из текстбоксов
             teacher.Id = Convert.ToInt32(txtIdTeacher.Text);
             teacher.Name = txtNameTeacher.Text;
+            foreach (Subject subject in subjects)
+            {
+                if (subject.Name == comSubjectTeacher.Text)
+                {
+                    teacher.Subject = subject;
+                }
+            }
 
             // Добавляем данные в список аудиторий
             teachers.Add(teacher);
