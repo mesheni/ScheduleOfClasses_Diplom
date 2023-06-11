@@ -7,7 +7,14 @@
         mc:Ignorable="d"
         Title="Генератор расписания" Height="500" Width="900" MinHeight="500" MinWidth="900" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Grid Margin="10">
+        <Menu Height="25" VerticalAlignment="Top">
+            <MenuItem Header="Меню">
+                <MenuItem x:Name="HelpButtonMenu" Header="Помощь" Click="HelpButtonMenu_Click" ></MenuItem>
+                <Separator />
+                <MenuItem x:Name="ExitButtonMenu" Header="Выход" Click="ExitButtonMenu_Click" ></MenuItem>
+            </MenuItem>
+        </Menu>
+        <Grid Margin="10,25,10,10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="400*"/>
@@ -24,10 +31,6 @@
             <Button x:Name="LoadSchedule"  Content="Загрузить расписание" HorizontalAlignment="Left" 
                 Margin="385,0,0,0" VerticalAlignment="Center" Height="auto" Width="138" Click="LoadSchedule_Click"/>
             <!--Панель для выбора, таблиц. Список преподавателей, кабинетов, расписание.-->
-            <ComboBox  Margin="0,4,0,4" HorizontalAlignment="Right" 
-                      Width="100" Height="19.96">
-                <ComboBoxItem Content="Расписание"/>
-            </ComboBox>
 
             <!--<ListBox Grid.Row="1" x:Name="scheduleListBox" />-->
 
@@ -79,62 +82,62 @@
                 <TextBlock TextAlignment="Center" Height="40" Grid.Row="8" Grid.Column="0" Text="Урок 8" FontWeight="Bold" Background="#FFE0E0E0" />
 
                 <!--Добавьте элементы для каждого урока и каждого дня недели-->
-                <TextBlock Name="TextBlockPon1" TextAlignment="Center" Grid.Row="1" Grid.Column="1" Text="" />
-                <TextBlock Name="TextBlockPon2" TextAlignment="Center" Grid.Row="2" Grid.Column="1" Text="" />
-                <TextBlock Name="TextBlockPon3" TextAlignment="Center" Grid.Row="3" Grid.Column="1" Text="" />
-                <TextBlock Name="TextBlockPon4" TextAlignment="Center" Grid.Row="4" Grid.Column="1" Text="" />
-                <TextBlock Name="TextBlockPon5" TextAlignment="Center" Grid.Row="5" Grid.Column="1" Text="" />
-                <TextBlock Name="TextBlockPon6" TextAlignment="Center" Grid.Row="6" Grid.Column="1" Text="" />
-                <TextBlock Name="TextBlockPon7" TextAlignment="Center" Grid.Row="7" Grid.Column="1" Text="" />
-                <TextBlock Name="TextBlockPon8" TextAlignment="Center" Grid.Row="8" Grid.Column="1" Text="" />
+                <TextBlock x:Name="TextBlockPon1" TextAlignment="Center" Grid.Row="1" Grid.Column="1" Text="" />
+                <TextBlock x:Name="TextBlockPon2" TextAlignment="Center" Grid.Row="2" Grid.Column="1" Text="" />
+                <TextBlock x:Name="TextBlockPon3" TextAlignment="Center" Grid.Row="3" Grid.Column="1" Text="" />
+                <TextBlock x:Name="TextBlockPon4" TextAlignment="Center" Grid.Row="4" Grid.Column="1" Text="" />
+                <TextBlock x:Name="TextBlockPon5" TextAlignment="Center" Grid.Row="5" Grid.Column="1" Text="" />
+                <TextBlock x:Name="TextBlockPon6" TextAlignment="Center" Grid.Row="6" Grid.Column="1" Text="" />
+                <TextBlock x:Name="TextBlockPon7" TextAlignment="Center" Grid.Row="7" Grid.Column="1" Text="" />
+                <TextBlock x:Name="TextBlockPon8" TextAlignment="Center" Grid.Row="8" Grid.Column="1" Text="" />
 
-                <TextBlock Name="TextBlockVt1" TextAlignment="Center" Grid.Row="1" Grid.Column="2" Text="" />
-                <TextBlock Name="TextBlockVt2" TextAlignment="Center" Grid.Row="2" Grid.Column="2" Text="" />
-                <TextBlock Name="TextBlockVt3" TextAlignment="Center" Grid.Row="3" Grid.Column="2" Text="" />
-                <TextBlock Name="TextBlockVt4" TextAlignment="Center" Grid.Row="4" Grid.Column="2" Text="" />
-                <TextBlock Name="TextBlockVt5" TextAlignment="Center" Grid.Row="5" Grid.Column="2" Text="" />
-                <TextBlock Name="TextBlockVt6" TextAlignment="Center" Grid.Row="6" Grid.Column="2" Text="" />
-                <TextBlock Name="TextBlockVt7" TextAlignment="Center" Grid.Row="7" Grid.Column="2" Text="" />
-                <TextBlock Name="TextBlockVt8" TextAlignment="Center" Grid.Row="8" Grid.Column="2" Text="" />
+                <TextBlock x:Name="TextBlockVt1" TextAlignment="Center" Grid.Row="1" Grid.Column="2" Text="" />
+                <TextBlock x:Name="TextBlockVt2" TextAlignment="Center" Grid.Row="2" Grid.Column="2" Text="" />
+                <TextBlock x:Name="TextBlockVt3" TextAlignment="Center" Grid.Row="3" Grid.Column="2" Text="" />
+                <TextBlock x:Name="TextBlockVt4" TextAlignment="Center" Grid.Row="4" Grid.Column="2" Text="" />
+                <TextBlock x:Name="TextBlockVt5" TextAlignment="Center" Grid.Row="5" Grid.Column="2" Text="" />
+                <TextBlock x:Name="TextBlockVt6" TextAlignment="Center" Grid.Row="6" Grid.Column="2" Text="" />
+                <TextBlock x:Name="TextBlockVt7" TextAlignment="Center" Grid.Row="7" Grid.Column="2" Text="" />
+                <TextBlock x:Name="TextBlockVt8" TextAlignment="Center" Grid.Row="8" Grid.Column="2" Text="" />
 
-                <TextBlock Name="TextBlockSr1" TextAlignment="Center" Grid.Row="1" Grid.Column="3" Text="" />
-                <TextBlock Name="TextBlockSr2" TextAlignment="Center" Grid.Row="2" Grid.Column="3" Text="" />
-                <TextBlock Name="TextBlockSr3" TextAlignment="Center" Grid.Row="3" Grid.Column="3" Text="" />
-                <TextBlock Name="TextBlockSr4" TextAlignment="Center" Grid.Row="4" Grid.Column="3" Text="" />
-                <TextBlock Name="TextBlockSr5" TextAlignment="Center" Grid.Row="5" Grid.Column="3" Text="" />
-                <TextBlock Name="TextBlockSr6" TextAlignment="Center" Grid.Row="6" Grid.Column="3" Text="" />
-                <TextBlock Name="TextBlockSr7" TextAlignment="Center" Grid.Row="7" Grid.Column="3" Text="" />
-                <TextBlock Name="TextBlockSr8" TextAlignment="Center" Grid.Row="8" Grid.Column="3" Text="" />
+                <TextBlock x:Name="TextBlockSr1" TextAlignment="Center" Grid.Row="1" Grid.Column="3" Text="" />
+                <TextBlock x:Name="TextBlockSr2" TextAlignment="Center" Grid.Row="2" Grid.Column="3" Text="" />
+                <TextBlock x:Name="TextBlockSr3" TextAlignment="Center" Grid.Row="3" Grid.Column="3" Text="" />
+                <TextBlock x:Name="TextBlockSr4" TextAlignment="Center" Grid.Row="4" Grid.Column="3" Text="" />
+                <TextBlock x:Name="TextBlockSr5" TextAlignment="Center" Grid.Row="5" Grid.Column="3" Text="" />
+                <TextBlock x:Name="TextBlockSr6" TextAlignment="Center" Grid.Row="6" Grid.Column="3" Text="" />
+                <TextBlock x:Name="TextBlockSr7" TextAlignment="Center" Grid.Row="7" Grid.Column="3" Text="" />
+                <TextBlock x:Name="TextBlockSr8" TextAlignment="Center" Grid.Row="8" Grid.Column="3" Text="" />
 
-                <TextBlock Name="TextBlockChet1" TextAlignment="Center" Grid.Row="1" Grid.Column="4" Text="" />
-                <TextBlock Name="TextBlockChet2" TextAlignment="Center" Grid.Row="2" Grid.Column="4" Text="" />
-                <TextBlock Name="TextBlockChet3" TextAlignment="Center" Grid.Row="3" Grid.Column="4" Text="" />
-                <TextBlock Name="TextBlockChet4" TextAlignment="Center" Grid.Row="4" Grid.Column="4" Text="" />
-                <TextBlock Name="TextBlockChet5" TextAlignment="Center" Grid.Row="5" Grid.Column="4" Text="" />
-                <TextBlock Name="TextBlockChet6" TextAlignment="Center" Grid.Row="6" Grid.Column="4" Text="" />
-                <TextBlock Name="TextBlockChet7" TextAlignment="Center" Grid.Row="7" Grid.Column="4" Text="" />
-                <TextBlock Name="TextBlockChet8" TextAlignment="Center" Grid.Row="8" Grid.Column="4" Text="" />
+                <TextBlock x:Name="TextBlockChet1" TextAlignment="Center" Grid.Row="1" Grid.Column="4" Text="" />
+                <TextBlock x:Name="TextBlockChet2" TextAlignment="Center" Grid.Row="2" Grid.Column="4" Text="" />
+                <TextBlock x:Name="TextBlockChet3" TextAlignment="Center" Grid.Row="3" Grid.Column="4" Text="" />
+                <TextBlock x:Name="TextBlockChet4" TextAlignment="Center" Grid.Row="4" Grid.Column="4" Text="" />
+                <TextBlock x:Name="TextBlockChet5" TextAlignment="Center" Grid.Row="5" Grid.Column="4" Text="" />
+                <TextBlock x:Name="TextBlockChet6" TextAlignment="Center" Grid.Row="6" Grid.Column="4" Text="" />
+                <TextBlock x:Name="TextBlockChet7" TextAlignment="Center" Grid.Row="7" Grid.Column="4" Text="" />
+                <TextBlock x:Name="TextBlockChet8" TextAlignment="Center" Grid.Row="8" Grid.Column="4" Text="" />
 
-                <TextBlock Name="TextBlockPt1" TextAlignment="Center" Grid.Row="1" Grid.Column="5" Text="" />
-                <TextBlock Name="TextBlockPt2" TextAlignment="Center" Grid.Row="2" Grid.Column="5" Text="" />
-                <TextBlock Name="TextBlockPt3" TextAlignment="Center" Grid.Row="3" Grid.Column="5" Text="" />
-                <TextBlock Name="TextBlockPt4" TextAlignment="Center" Grid.Row="4" Grid.Column="5" Text="" />
-                <TextBlock Name="TextBlockPt5" TextAlignment="Center" Grid.Row="5" Grid.Column="5" Text="" />
-                <TextBlock Name="TextBlockPt6" TextAlignment="Center" Grid.Row="6" Grid.Column="5" Text="" />
-                <TextBlock Name="TextBlockPt7" TextAlignment="Center" Grid.Row="7" Grid.Column="5" Text="" />
-                <TextBlock Name="TextBlockPt8" TextAlignment="Center" Grid.Row="8" Grid.Column="5" Text="" />
+                <TextBlock x:Name="TextBlockPt1" TextAlignment="Center" Grid.Row="1" Grid.Column="5" Text="" />
+                <TextBlock x:Name="TextBlockPt2" TextAlignment="Center" Grid.Row="2" Grid.Column="5" Text="" />
+                <TextBlock x:Name="TextBlockPt3" TextAlignment="Center" Grid.Row="3" Grid.Column="5" Text="" />
+                <TextBlock x:Name="TextBlockPt4" TextAlignment="Center" Grid.Row="4" Grid.Column="5" Text="" />
+                <TextBlock x:Name="TextBlockPt5" TextAlignment="Center" Grid.Row="5" Grid.Column="5" Text="" />
+                <TextBlock x:Name="TextBlockPt6" TextAlignment="Center" Grid.Row="6" Grid.Column="5" Text="" />
+                <TextBlock x:Name="TextBlockPt7" TextAlignment="Center" Grid.Row="7" Grid.Column="5" Text="" />
+                <TextBlock x:Name="TextBlockPt8" TextAlignment="Center" Grid.Row="8" Grid.Column="5" Text="" />
 
-                <TextBlock Name="TextBlockSb1" TextAlignment="Center" Grid.Row="1" Grid.Column="6" Text="" />
-                <TextBlock Name="TextBlockSb2" TextAlignment="Center" Grid.Row="2" Grid.Column="6" Text="" />
-                <TextBlock Name="TextBlockSb3" TextAlignment="Center" Grid.Row="3" Grid.Column="6" Text="" />
-                <TextBlock Name="TextBlockSb4" TextAlignment="Center" Grid.Row="4" Grid.Column="6" Text="" />
-                <TextBlock Name="TextBlockSb5" TextAlignment="Center" Grid.Row="5" Grid.Column="6" Text="" />
-                <TextBlock Name="TextBlockSb6" TextAlignment="Center" Grid.Row="6" Grid.Column="6" Text="" />
-                <TextBlock Name="TextBlockSb7" TextAlignment="Center" Grid.Row="7" Grid.Column="6" Text="" />
-                <TextBlock Name="TextBlockSb8" TextAlignment="Center" Grid.Row="8" Grid.Column="6" Text="" />
+                <TextBlock x:Name="TextBlockSb1" TextAlignment="Center" Grid.Row="1" Grid.Column="6" Text="" />
+                <TextBlock x:Name="TextBlockSb2" TextAlignment="Center" Grid.Row="2" Grid.Column="6" Text="" />
+                <TextBlock x:Name="TextBlockSb3" TextAlignment="Center" Grid.Row="3" Grid.Column="6" Text="" />
+                <TextBlock x:Name="TextBlockSb4" TextAlignment="Center" Grid.Row="4" Grid.Column="6" Text="" />
+                <TextBlock x:Name="TextBlockSb5" TextAlignment="Center" Grid.Row="5" Grid.Column="6" Text="" />
+                <TextBlock x:Name="TextBlockSb6" TextAlignment="Center" Grid.Row="6" Grid.Column="6" Text="" />
+                <TextBlock x:Name="TextBlockSb7" TextAlignment="Center" Grid.Row="7" Grid.Column="6" Text="" />
+                <TextBlock x:Name="TextBlockSb8" TextAlignment="Center" Grid.Row="8" Grid.Column="6" Text="" />
 
             </Grid>
-            
+
 
 
         </Grid>

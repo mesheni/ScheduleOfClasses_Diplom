@@ -40,6 +40,7 @@ namespace Test
         private string filePathSubject = "subjects.xml"; // название файла, где будут храниться предметы
         private string filePathClasses = "classes.xml"; // название файла, где будут храниться классы
         public static string filePathSchedule = ""; // название файла расписания по умолчанию, где будут храниться расписание
+
         private List<Auditorium> auditoriums = new List<Auditorium>();
         private List<Teacher> teachers = new List<Teacher>();
         private List<Subject> subjects = new List<Subject>();
@@ -390,6 +391,21 @@ namespace Test
             }
 
             return null;
+        }
+
+        private void HelpButtonMenu_Click(object sender, RoutedEventArgs e)
+        {
+            HelpWindow helpWindow = new HelpWindow();
+            helpWindow.ShowDialog();
+        }
+
+        private void ExitButtonMenu_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Вы действительно хотите выйти? Несохраненные данные будут утеряны!", "Выход", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                this.Close();
+            }
         }
     }
 }
