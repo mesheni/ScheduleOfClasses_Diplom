@@ -21,6 +21,8 @@
                     Margin="121,0,0,0" VerticalAlignment="Center" Height="auto" Width="116" Click="AddData_Click"/>
             <Button x:Name="SaveSchedule"  Content="Сохранить расписание" HorizontalAlignment="Left" 
                     Margin="242,0,0,0" VerticalAlignment="Center" Height="auto" Width="138" Click="SaveSchedule_Click"/>
+            <Button x:Name="LoadSchedule"  Content="Загрузить расписание" HorizontalAlignment="Left" 
+                Margin="385,0,0,0" VerticalAlignment="Center" Height="auto" Width="138" Click="LoadSchedule_Click"/>
             <!--Панель для выбора, таблиц. Список преподавателей, кабинетов, расписание.-->
             <ComboBox  Margin="0,4,0,4" HorizontalAlignment="Right" 
                       Width="100" Height="19.96">
@@ -31,7 +33,7 @@
 
 
             <Grid x:Name="gridSchedule" Grid.Row="1">
-                 <!--Создание столбцов для дней недели--> 
+                <!--Создание столбцов для дней недели-->
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
@@ -40,10 +42,10 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
-                     
+
                 </Grid.ColumnDefinitions>
 
-                 <!--Создание строк для уроков--> 
+                <!--Создание строк для уроков-->
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -56,7 +58,7 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                 <!--Заголовки дней недели--> 
+                <!--Заголовки дней недели-->
                 <TextBlock TextAlignment="Center" Height="20" Width="70" Grid.Row="0" Grid.Column="0" Text="День" FontWeight="Bold" Background="#FFE0E0E0" />
                 <TextBlock TextAlignment="Center" Grid.Row="0" Grid.Column="1" Text="Понедельник" FontWeight="Bold" Background="#FFE0E0E0" />
                 <TextBlock TextAlignment="Center" Grid.Row="0" Grid.Column="2" Text="Вторник" FontWeight="Bold" Background="#FFE0E0E0" />
@@ -64,9 +66,9 @@
                 <TextBlock TextAlignment="Center" Grid.Row="0" Grid.Column="4" Text="Четверг" FontWeight="Bold" Background="#FFE0E0E0" />
                 <TextBlock TextAlignment="Center" Grid.Row="0" Grid.Column="5" Text="Пятница" FontWeight="Bold" Background="#FFE0E0E0" />
                 <TextBlock TextAlignment="Center" Grid.Row="0" Grid.Column="6" Text="Суббота" FontWeight="Bold" Background="#FFE0E0E0" />
-                 <!--Добавьте заголовки для остальных дней недели--> 
+                <!--Добавьте заголовки для остальных дней недели-->
 
-                 <!--Данные расписания--> 
+                <!--Данные расписания-->
                 <TextBlock TextAlignment="Center" Height="40" Grid.Row="1" Grid.Column="0" Text="Урок 1" FontWeight="Bold" Background="#FFE0E0E0" />
                 <TextBlock TextAlignment="Center" Height="40" Grid.Row="2" Grid.Column="0" Text="Урок 2" FontWeight="Bold" Background="#FFE0E0E0" />
                 <TextBlock TextAlignment="Center" Height="40" Grid.Row="3" Grid.Column="0" Text="Урок 3" FontWeight="Bold" Background="#FFE0E0E0" />
@@ -75,8 +77,8 @@
                 <TextBlock TextAlignment="Center" Height="40" Grid.Row="6" Grid.Column="0" Text="Урок 6" FontWeight="Bold" Background="#FFE0E0E0" />
                 <TextBlock TextAlignment="Center" Height="40" Grid.Row="7" Grid.Column="0" Text="Урок 7" FontWeight="Bold" Background="#FFE0E0E0" />
                 <TextBlock TextAlignment="Center" Height="40" Grid.Row="8" Grid.Column="0" Text="Урок 8" FontWeight="Bold" Background="#FFE0E0E0" />
-                
-                <!--Добавьте элементы для каждого урока и каждого дня недели--> 
+
+                <!--Добавьте элементы для каждого урока и каждого дня недели-->
                 <TextBlock Name="TextBlockPon1" TextAlignment="Center" Grid.Row="1" Grid.Column="1" Text="" />
                 <TextBlock Name="TextBlockPon2" TextAlignment="Center" Grid.Row="2" Grid.Column="1" Text="" />
                 <TextBlock Name="TextBlockPon3" TextAlignment="Center" Grid.Row="3" Grid.Column="1" Text="" />
@@ -132,6 +134,7 @@
                 <TextBlock Name="TextBlockSb8" TextAlignment="Center" Grid.Row="8" Grid.Column="6" Text="" />
 
             </Grid>
+            
 
 
         </Grid>

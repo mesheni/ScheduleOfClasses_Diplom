@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml;
 using System.Xml.Serialization;
+using Microsoft.Win32;
 using Test.GenClasses;
 using Test.Model;
 using Test.OtherWindow;
@@ -53,70 +54,70 @@ namespace Test
         public List<TextBlock> textBlocksPyat = new List<TextBlock>();
         public List<TextBlock> textBlocksSub = new List<TextBlock>();
 
-        private void InitTable()
-        {
-            textBlocksPon.Clear();
-            textBlocksVt.Clear();
-            textBlocksSr.Clear();
-            textBlocksChet.Clear();
-            textBlocksPyat.Clear();
-            textBlocksSub.Clear();
+        //private void InitTable()
+        //{
+        //    textBlocksPon.Clear();
+        //    textBlocksVt.Clear();
+        //    textBlocksSr.Clear();
+        //    textBlocksChet.Clear();
+        //    textBlocksPyat.Clear();
+        //    textBlocksSub.Clear();
 
-            textBlocksPon.Add(TextBlockPon1);
-            textBlocksPon.Add(TextBlockPon2);
-            textBlocksPon.Add(TextBlockPon3);
-            textBlocksPon.Add(TextBlockPon4);
-            textBlocksPon.Add(TextBlockPon5);
-            textBlocksPon.Add(TextBlockPon6);
-            textBlocksPon.Add(TextBlockPon7);
-            textBlocksPon.Add(TextBlockPon8);
+        //    textBlocksPon.Add(TextBlockPon1);
+        //    textBlocksPon.Add(TextBlockPon2);
+        //    textBlocksPon.Add(TextBlockPon3);
+        //    textBlocksPon.Add(TextBlockPon4);
+        //    textBlocksPon.Add(TextBlockPon5);
+        //    textBlocksPon.Add(TextBlockPon6);
+        //    textBlocksPon.Add(TextBlockPon7);
+        //    textBlocksPon.Add(TextBlockPon8);
 
-            textBlocksVt.Add(TextBlockVt1);
-            textBlocksVt.Add(TextBlockVt2);
-            textBlocksVt.Add(TextBlockVt3);
-            textBlocksVt.Add(TextBlockVt4);
-            textBlocksVt.Add(TextBlockVt5);
-            textBlocksVt.Add(TextBlockVt6);
-            textBlocksVt.Add(TextBlockVt7);
-            textBlocksVt.Add(TextBlockVt8);
+        //    textBlocksVt.Add(TextBlockVt1);
+        //    textBlocksVt.Add(TextBlockVt2);
+        //    textBlocksVt.Add(TextBlockVt3);
+        //    textBlocksVt.Add(TextBlockVt4);
+        //    textBlocksVt.Add(TextBlockVt5);
+        //    textBlocksVt.Add(TextBlockVt6);
+        //    textBlocksVt.Add(TextBlockVt7);
+        //    textBlocksVt.Add(TextBlockVt8);
 
-            textBlocksSr.Add(TextBlockSr1);
-            textBlocksSr.Add(TextBlockSr2);
-            textBlocksSr.Add(TextBlockSr3);
-            textBlocksSr.Add(TextBlockSr4);
-            textBlocksSr.Add(TextBlockSr5);
-            textBlocksSr.Add(TextBlockSr6);
-            textBlocksSr.Add(TextBlockSr7);
-            textBlocksSr.Add(TextBlockSr8);
+        //    textBlocksSr.Add(TextBlockSr1);
+        //    textBlocksSr.Add(TextBlockSr2);
+        //    textBlocksSr.Add(TextBlockSr3);
+        //    textBlocksSr.Add(TextBlockSr4);
+        //    textBlocksSr.Add(TextBlockSr5);
+        //    textBlocksSr.Add(TextBlockSr6);
+        //    textBlocksSr.Add(TextBlockSr7);
+        //    textBlocksSr.Add(TextBlockSr8);
 
-            textBlocksChet.Add(TextBlockChet1);
-            textBlocksChet.Add(TextBlockChet2);
-            textBlocksChet.Add(TextBlockChet3);
-            textBlocksChet.Add(TextBlockChet4);
-            textBlocksChet.Add(TextBlockChet5);
-            textBlocksChet.Add(TextBlockChet6);
-            textBlocksChet.Add(TextBlockChet7);
-            textBlocksChet.Add(TextBlockChet8);
+        //    textBlocksChet.Add(TextBlockChet1);
+        //    textBlocksChet.Add(TextBlockChet2);
+        //    textBlocksChet.Add(TextBlockChet3);
+        //    textBlocksChet.Add(TextBlockChet4);
+        //    textBlocksChet.Add(TextBlockChet5);
+        //    textBlocksChet.Add(TextBlockChet6);
+        //    textBlocksChet.Add(TextBlockChet7);
+        //    textBlocksChet.Add(TextBlockChet8);
 
-            textBlocksPyat.Add(TextBlockPt1);
-            textBlocksPyat.Add(TextBlockPt2);
-            textBlocksPyat.Add(TextBlockPt3);
-            textBlocksPyat.Add(TextBlockPt4);
-            textBlocksPyat.Add(TextBlockPt5);
-            textBlocksPyat.Add(TextBlockPt6);
-            textBlocksPyat.Add(TextBlockPt7);
-            textBlocksPyat.Add(TextBlockPt8);
+        //    textBlocksPyat.Add(TextBlockPt1);
+        //    textBlocksPyat.Add(TextBlockPt2);
+        //    textBlocksPyat.Add(TextBlockPt3);
+        //    textBlocksPyat.Add(TextBlockPt4);
+        //    textBlocksPyat.Add(TextBlockPt5);
+        //    textBlocksPyat.Add(TextBlockPt6);
+        //    textBlocksPyat.Add(TextBlockPt7);
+        //    textBlocksPyat.Add(TextBlockPt8);
 
-            textBlocksSub.Add(TextBlockSb1);
-            textBlocksSub.Add(TextBlockSb2);
-            textBlocksSub.Add(TextBlockSb3);
-            textBlocksSub.Add(TextBlockSb4);
-            textBlocksSub.Add(TextBlockSb5);
-            textBlocksSub.Add(TextBlockSb6);
-            textBlocksSub.Add(TextBlockSb7);
-            textBlocksSub.Add(TextBlockSb8);
+        //    textBlocksSub.Add(TextBlockSb1);
+        //    textBlocksSub.Add(TextBlockSb2);
+        //    textBlocksSub.Add(TextBlockSb3);
+        //    textBlocksSub.Add(TextBlockSb4);
+        //    textBlocksSub.Add(TextBlockSb5);
+        //    textBlocksSub.Add(TextBlockSb6);
+        //    textBlocksSub.Add(TextBlockSb7);
+        //    textBlocksSub.Add(TextBlockSb8);
             
-        }
+        //}
 
         private void InitTableAll()
         {
@@ -165,6 +166,7 @@ namespace Test
             textBlocksAll.Add(TextBlockSb6);
 
         }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -333,6 +335,61 @@ namespace Test
                 xmlDoc.Save($"{scheduleDir}{filePathSchedule}.xml");
             }
 
+        }
+
+        private void LoadSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "XML files (*.xml)|*.xml";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string fileName = openFileDialog.FileName;
+
+                try
+                {
+                    // Загрузка XML файла
+                    XmlDocument xmlDoc = new XmlDocument();
+                    xmlDoc.Load(fileName);
+
+                    // Получение всех элементов Cell из XML
+                    XmlNodeList cellNodes = xmlDoc.SelectNodes("//Cell");
+
+                    // Обновление данных в таблице
+                    foreach (XmlNode cellNode in cellNodes)
+                    {
+                        int row = int.Parse(cellNode.Attributes["Row"].Value);
+                        int column = int.Parse(cellNode.Attributes["Column"].Value);
+                        string text = cellNode.InnerText;
+
+                        // Поиск TextBlock в таблице по координатам
+                        TextBlock textBlock = GetTextBlockByCoordinates(row, column);
+                        if (textBlock != null)
+                        {
+                            // Обновление содержимого TextBlock
+                            textBlock.Text = text;
+                        }
+                    }
+
+                    MessageBox.Show("Расписание загружено из файла " + fileName);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка при загрузке файла: " + ex.Message);
+                }
+            }
+        }
+
+        private TextBlock GetTextBlockByCoordinates(int row, int column)
+        {
+            foreach (UIElement element in gridSchedule.Children)
+            {
+                if (element is TextBlock textBlock && Grid.GetRow(textBlock) == row && Grid.GetColumn(textBlock) == column)
+                {
+                    return textBlock;
+                }
+            }
+
+            return null;
         }
     }
 }
